@@ -21,7 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 mongoose.connect(
-  `mongodb+srv://${process.env.USER_DB}:${process.env.PASSWORD_DB}@cluster0.cuu2dpc.mongodb.net/blogDB`
+  `mongodb+srv://${process.env.USER_DB}:${encodeURIComponent(
+    process.env.PASSWORD_DB
+  )}@cluster0.cuu2dpc.mongodb.net/blogDB`
 );
 
 const postsSchema = {
